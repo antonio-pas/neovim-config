@@ -29,10 +29,14 @@ vim.opt.mouse = 'a'
 vim.pack.add({
   'https://github.com/nvim-mini/mini.nvim',
   'https://github.com/neovim/nvim-lspconfig',
-  'https://github.com/folke/lazydev.nvim'
+  'https://github.com/folke/lazydev.nvim',
+  'https://github.com/github/copilot.vim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/nvim-treesitter/nvim-treesitter'
 })
 
 require('lazydev').setup()
+require('gitsigns').setup()
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
@@ -52,8 +56,16 @@ require('mini.snippets').setup({})
 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
+vim.lsp.enable('jsonls')
 
 local pick = require('mini.pick')
+local tree = require('mini.files')
 
 vim.keymap.set('n', '<leader>ff', pick.builtin.files)
 vim.keymap.set('n', '<leader>lg', pick.builtin.grep_live)
+vim.keymap.set('n', '<leader>tr', tree.open)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'javascriptreact', 'typescript', 'javascript', 'typescriptreact', 'lua', 'rust', 'css' },
+  callback = function() vim.treesitter.start() end,
+})
