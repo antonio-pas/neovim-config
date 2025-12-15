@@ -57,6 +57,7 @@ require('mini.snippets').setup({})
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jsonls')
+vim.lsp.enable('tailwindcss')
 
 local pick = require('mini.pick')
 local tree = require('mini.files')
