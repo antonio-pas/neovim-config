@@ -22,7 +22,6 @@ vim.opt.termguicolors = true
 vim.diagnostic.config({ virtual_text = true })
 vim.cmd("set completeopt+=noselect,fuzzy")
 vim.opt.background = "dark"
-vim.cmd.colorscheme "retrobox"
 vim.g.mapleader = " "
 vim.opt.mouse = 'a'
 
@@ -32,11 +31,14 @@ vim.pack.add({
   'https://github.com/folke/lazydev.nvim',
   'https://github.com/github/copilot.vim',
   'https://github.com/lewis6991/gitsigns.nvim',
-  'https://github.com/nvim-treesitter/nvim-treesitter'
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/nendix/zen.nvim'
 })
 
 require('lazydev').setup()
 require('gitsigns').setup()
+require('zen').setup()
+vim.cmd.colorscheme "zen"
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
