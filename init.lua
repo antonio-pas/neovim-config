@@ -32,9 +32,19 @@ vim.pack.add({
   'https://github.com/github/copilot.vim',
   'https://github.com/lewis6991/gitsigns.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
-  'https://github.com/nendix/zen.nvim'
+  'https://github.com/nendix/zen.nvim',
+  'https://github.com/windwp/nvim-ts-autotag',
+  'https://github.com/catgoose/nvim-colorizer.lua'
 })
 
+require("colorizer").setup({
+  user_default_options = {
+    css = true,
+    css_fn = true,
+    tailwind = 'lsp',
+  },
+})
+require('nvim-ts-autotag').setup()
 require('lazydev').setup()
 require('gitsigns').setup()
 require('zen').setup()
