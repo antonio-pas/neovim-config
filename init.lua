@@ -34,7 +34,8 @@ vim.pack.add({
   'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/nendix/zen.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
-  'https://github.com/catgoose/nvim-colorizer.lua'
+  'https://github.com/catgoose/nvim-colorizer.lua',
+  'https://github.com/wakatime/vim-wakatime'
 })
 
 require("colorizer").setup({
@@ -47,7 +48,9 @@ require("colorizer").setup({
 require('nvim-ts-autotag').setup()
 require('lazydev').setup()
 require('gitsigns').setup()
-require('zen').setup()
+require('zen').setup({
+  transparent = true
+})
 vim.cmd.colorscheme "zen"
 
 require('mini.jump2d').setup({})
@@ -76,7 +79,12 @@ local tree = require('mini.files')
 
 vim.keymap.set('n', '<leader>ff', pick.builtin.files)
 vim.keymap.set('n', '<leader>lg', pick.builtin.grep_live)
+vim.keymap.set('n', '<leader>af', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>tr', tree.open)
+vim.keymap.set('n', 'j', "gj")
+vim.keymap.set('n', 'k', "gk")
+vim.keymap.set('v', 'j', "gj")
+vim.keymap.set('v', 'k', "gk")
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'javascriptreact', 'typescript', 'javascript', 'typescriptreact', 'lua', 'rust', 'css' },
