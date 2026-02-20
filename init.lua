@@ -34,24 +34,21 @@ vim.pack.add({
   'https://github.com/nvim-treesitter/nvim-treesitter',
   'https://github.com/nendix/zen.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
-  'https://github.com/catgoose/nvim-colorizer.lua',
-  'https://github.com/wakatime/vim-wakatime'
+  'https://github.com/wakatime/vim-wakatime',
+  'https://github.com/craftzdog/solarized-osaka.nvim',
 })
 
-require("colorizer").setup({
-  user_default_options = {
-    css = true,
-    css_fn = true,
-    tailwind = 'lsp',
-  },
-})
 require('nvim-ts-autotag').setup()
 require('lazydev').setup()
 require('gitsigns').setup()
 require('zen').setup({
   transparent = true
 })
-vim.cmd.colorscheme "zen"
+require('solarized-osaka').setup({
+  transparent = true,
+})
+-- vim.cmd.colorscheme "zen"
+vim.cmd.colorscheme "solarized-osaka"
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
