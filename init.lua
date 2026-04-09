@@ -36,6 +36,10 @@ vim.pack.add({
   'https://github.com/windwp/nvim-ts-autotag',
   'https://github.com/wakatime/vim-wakatime',
   'https://github.com/craftzdog/solarized-osaka.nvim',
+  'https://github.com/christoomey/vim-tmux-navigator',
+  'https://github.com/catppuccin/nvim',
+  'https://github.com/projekt0n/github-nvim-theme'
+  -- 'https://github.com/rose-pine/neovim'
 })
 
 require('nvim-ts-autotag').setup()
@@ -47,8 +51,16 @@ require('zen').setup({
 require('solarized-osaka').setup({
   transparent = true,
 })
+require('catppuccin').setup({
+  background = {
+    dark = "mocha",
+    light = "mocha"
+  },
+  transparent_background = true
+})
 -- vim.cmd.colorscheme "zen"
-vim.cmd.colorscheme "solarized-osaka"
+-- vim.cmd.colorscheme "solarized-osaka"
+vim.cmd.colorscheme "github_dark_high_contrast"
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
