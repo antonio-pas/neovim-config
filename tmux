@@ -20,15 +20,15 @@ set -g base-index 1
 set -g pane-base-index 1
 set-window-option -g pane-base-index 1
 set-option -g renumber-windows on
-set -g status-style bg=terminal,fg=black
+set -g status-style bg=terminal,fg=white
 
 # change split color
 set -g pane-active-border-style fg=blue
 set -g pane-border-style fg=black
 set -g status-right "%d-%m-%y %H:%M"
-set -g window-status-separator ""
-set -g window-status-format " (#I) #W "
-set -g window-status-current-format "#[fg=white,bg=default,bold] (#I) #W "
+set -g window-status-separator "  "
+set -g window-status-format "#I: #W "
+set -g window-status-current-format "#[fg=white,bg=default,bold]#I: #W "
 
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selections

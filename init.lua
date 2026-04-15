@@ -31,7 +31,11 @@ vim.pack.add({
   'https://github.com/folke/lazydev.nvim',
   'https://github.com/github/copilot.vim',
   'https://github.com/lewis6991/gitsigns.nvim',
-  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/vague-theme/vague.nvim',
+  {
+    src = 'https://github.com/nvim-treesitter/nvim-treesitter',
+    version = 'main'
+  },
   'https://github.com/nendix/zen.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
   'https://github.com/wakatime/vim-wakatime',
@@ -58,9 +62,12 @@ require('catppuccin').setup({
   },
   transparent_background = true
 })
--- vim.cmd.colorscheme "zen"
 -- vim.cmd.colorscheme "solarized-osaka"
-vim.cmd.colorscheme "github_dark_high_contrast"
+-- vim.cmd.colorscheme "github_dark_high_contrast"
+require('vague').setup({
+  transparent = true,
+})
+vim.cmd.colorscheme "zen"
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
@@ -94,8 +101,11 @@ vim.keymap.set('n', 'j', "gj")
 vim.keymap.set('n', 'k', "gk")
 vim.keymap.set('v', 'j', "gj")
 vim.keymap.set('v', 'k', "gk")
-
+require('nvim-treesitter').setup {
+  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
+  install_dir = vim.fn.stdpath('data') .. '/site'
+}
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'javascriptreact', 'typescript', 'javascript', 'typescriptreact', 'lua', 'rust', 'css' },
+  pattern = { 'lua', 'typescript', 'typescriptreact' },
   callback = function() vim.treesitter.start() end,
 })
