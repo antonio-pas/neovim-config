@@ -32,10 +32,13 @@ vim.pack.add({
   'https://github.com/github/copilot.vim',
   'https://github.com/lewis6991/gitsigns.nvim',
   'https://github.com/vague-theme/vague.nvim',
+  'https://github.com/chomosuke/typst-preview.nvim',
+  'https://github.com/rafamadriz/friendly-snippets',
   {
     src = 'https://github.com/nvim-treesitter/nvim-treesitter',
     version = 'main'
   },
+  -- 'https://github.com/obsidian-nvim/obsidian.nvim',
   'https://github.com/nendix/zen.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
   'https://github.com/wakatime/vim-wakatime',
@@ -83,12 +86,24 @@ require('mini.statusline').setup({})
 require('mini.trailspace').setup({})
 require('mini.completion').setup({})
 require('mini.icons').setup({})
-require('mini.snippets').setup({})
+
+local snippets = require('mini.snippets')
+local friendly_snippets_path = vim.fn.stdpath("data") .. "/site/pack/core/opt/friendly-snippets/snippets/"
+snippets.setup({
+  snippets = {
+     snippets.gen_loader.from_lang({
+      base = friendly_snippets_path
+    }),
+  }
+})
+
 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jsonls')
 vim.lsp.enable('tailwindcss')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('tinymist')
 
 local pick = require('mini.pick')
 local tree = require('mini.files')
@@ -101,11 +116,26 @@ vim.keymap.set('n', 'j', "gj")
 vim.keymap.set('n', 'k', "gk")
 vim.keymap.set('v', 'j', "gj")
 vim.keymap.set('v', 'k', "gk")
+
+require('typst-preview').setup()
 require('nvim-treesitter').setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua', 'typescript', 'typescriptreact' },
+  pattern = { 'lua', 'typescript', 'typescriptreact', 'wgsl' },
   callback = function() vim.treesitter.start() end,
 })
+
+-- require('obsidian').setup({
+--   legacy_commands = false,
+--   workspaces = {
+--     {
+--       name = "personal",
+--       path = "~/Documents/Vault",
+--     },
+--   },
+--   sync = {
+--     enabled = true
+--   }
+-- })
