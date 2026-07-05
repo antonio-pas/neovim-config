@@ -31,7 +31,6 @@ vim.pack.add({
   'https://github.com/folke/lazydev.nvim',
   'https://github.com/github/copilot.vim',
   'https://github.com/lewis6991/gitsigns.nvim',
-  'https://github.com/vague-theme/vague.nvim',
   'https://github.com/chomosuke/typst-preview.nvim',
   'https://github.com/rafamadriz/friendly-snippets',
   {
@@ -39,22 +38,21 @@ vim.pack.add({
     version = 'main'
   },
   -- 'https://github.com/obsidian-nvim/obsidian.nvim',
-  'https://github.com/nendix/zen.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
   'https://github.com/wakatime/vim-wakatime',
-  'https://github.com/craftzdog/solarized-osaka.nvim',
   'https://github.com/christoomey/vim-tmux-navigator',
+
+  'https://github.com/craftzdog/solarized-osaka.nvim',
+  'https://github.com/vague-theme/vague.nvim',
   'https://github.com/catppuccin/nvim',
-  'https://github.com/projekt0n/github-nvim-theme'
+  'https://github.com/projekt0n/github-nvim-theme',
+  'https://github.com/loctvl842/monokai-pro.nvim',
+  'https://github.com/filipjanevski/0x96f.nvim',
   -- 'https://github.com/rose-pine/neovim'
 })
-
 require('nvim-ts-autotag').setup()
 require('lazydev').setup()
 require('gitsigns').setup()
-require('zen').setup({
-  transparent = true
-})
 require('solarized-osaka').setup({
   transparent = true,
 })
@@ -65,12 +63,21 @@ require('catppuccin').setup({
   },
   transparent_background = true
 })
--- vim.cmd.colorscheme "solarized-osaka"
--- vim.cmd.colorscheme "github_dark_high_contrast"
 require('vague').setup({
   transparent = true,
 })
-vim.cmd.colorscheme "zen"
+require("monokai-pro").setup({
+  transparent_background = true,
+  filter = "spectrum"
+})
+require('0x96f').setup({
+  transparent = true,
+})
+vim.cmd.colorscheme "catppuccin-mocha"
+-- vim.cmd.colorscheme "solarized-osaka"
+-- vim.cmd.colorscheme "github_dark_high_contrast"
+-- vim.cmd.colorscheme "monokai-pro"
+-- vim.cmd.colorscheme "zen"
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
