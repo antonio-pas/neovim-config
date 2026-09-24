@@ -1,29 +1,33 @@
+vim.cmd("set completeopt+=noselect,fuzzy")
+vim.cmd([[set mouse=]])
+vim.cmd([[set noswapfile]])
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.expandtab = true
-
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
-
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.smartindent = true
-
 vim.opt.winborder = "none"
 vim.opt.signcolumn = 'yes:1'
 
 vim.opt.hidden = true
 vim.opt.scrolloff = 4
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.hlsearch = false
 vim.opt.showmode = false
 vim.opt.termguicolors = true
-vim.diagnostic.config({ virtual_text = true })
-vim.cmd("set completeopt+=noselect,fuzzy")
-vim.opt.background = "dark"
+vim.diagnostic.config({ virtual_text = false })
 vim.g.mapleader = " "
-vim.opt.mouse = 'a'
+
+vim.o.background = "dark"
+vim.g.everforest_background = "medium"
+vim.g.everforest_transparent_background = 2
+vim.g.everforest_better_performance = 1
+vim.g.everforest_enable_italic = 1
 
 vim.pack.add({
   'https://github.com/nvim-mini/mini.nvim',
@@ -37,47 +41,16 @@ vim.pack.add({
     src = 'https://github.com/nvim-treesitter/nvim-treesitter',
     version = 'main'
   },
-  -- 'https://github.com/obsidian-nvim/obsidian.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
   'https://github.com/wakatime/vim-wakatime',
   'https://github.com/christoomey/vim-tmux-navigator',
 
-  'https://github.com/craftzdog/solarized-osaka.nvim',
-  'https://github.com/vague-theme/vague.nvim',
-  'https://github.com/catppuccin/nvim',
-  'https://github.com/projekt0n/github-nvim-theme',
-  'https://github.com/loctvl842/monokai-pro.nvim',
-  'https://github.com/filipjanevski/0x96f.nvim',
-  -- 'https://github.com/rose-pine/neovim'
+  'https://github.com/sainnhe/everforest'
 })
 require('nvim-ts-autotag').setup()
 require('lazydev').setup()
 require('gitsigns').setup()
-require('solarized-osaka').setup({
-  transparent = true,
-})
-require('catppuccin').setup({
-  background = {
-    dark = "mocha",
-    light = "mocha"
-  },
-  transparent_background = true
-})
-require('vague').setup({
-  transparent = true,
-})
-require("monokai-pro").setup({
-  transparent_background = true,
-  filter = "spectrum"
-})
-require('0x96f').setup({
-  transparent = true,
-})
-vim.cmd.colorscheme "catppuccin-mocha"
--- vim.cmd.colorscheme "solarized-osaka"
--- vim.cmd.colorscheme "github_dark_high_contrast"
--- vim.cmd.colorscheme "monokai-pro"
--- vim.cmd.colorscheme "zen"
+vim.cmd.colorscheme "everforest"
 
 require('mini.jump2d').setup({})
 require('mini.git').setup({})
@@ -104,13 +77,15 @@ snippets.setup({
   }
 })
 
-
 vim.lsp.enable('lua_ls')
-vim.lsp.enable('ts_ls')
+vim.lsp.enable('tsc')
 vim.lsp.enable('jsonls')
 vim.lsp.enable('tailwindcss')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('tinymist')
+vim.lsp.enable('ty')
+vim.lsp.enable('astro')
+vim.lsp.enable('clangd')
 
 local pick = require('mini.pick')
 local tree = require('mini.files')
@@ -126,23 +101,9 @@ vim.keymap.set('v', 'k', "gk")
 
 require('typst-preview').setup()
 require('nvim-treesitter').setup {
-  -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'lua', 'typescript', 'typescriptreact', 'wgsl' },
+  pattern = { 'lua', 'typescript', 'typescriptreact', 'wgsl', 'python', 'c', 'rust' },
   callback = function() vim.treesitter.start() end,
 })
-
--- require('obsidian').setup({
---   legacy_commands = false,
---   workspaces = {
---     {
---       name = "personal",
---       path = "~/Documents/Vault",
---     },
---   },
---   sync = {
---     enabled = true
---   }
--- })
