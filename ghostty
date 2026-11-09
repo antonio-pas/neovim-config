@@ -1,65 +1,8 @@
-# This is the configuration file for Ghostty.
-#
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /Users/antoniopassos/Library/Application Support/com.mitchellh.ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
-# Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
-
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-# font-family = SFMono Nerd Font
-font-family = MartianMono Nerd Font
-font-size=22
+font-family = Liga SFMono Nerd Font
+font-size=18
 window-padding-x = 16
 window-padding-y = 16
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# # Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
-#
-# # Empty values are used to reset config keys to default.
-# key =
-#
-# # Some config options have unique syntaxes for their value,
-# # which is explained in the docs for that config option.
-# # Just for example:
-# resize-overlay-duration = 4s 200ms
-# palette = 0=#001419
-# palette = 1=#db302d
-# palette = 2=#849900
-# palette = 3=#b28500
-# palette = 4=#268bd3
-# palette = 5=#d23681
-# palette = 6=#29a298
-# palette = 7=#fdf5e2
-# palette = 8=#063540
-# palette = 9=#f55350
-# palette = 10=#b7f900
-# palette = 11=#ffbf00
-# palette = 12=#46acf5
-# palette = 13=#f254a0
-# palette = 14=#2aeddd
-# palette = 15=#ffffff
+
 background = #131a1e
 foreground = #d3c6aa
 cursor-color = #d3c6aa
@@ -81,16 +24,6 @@ palette = 12=#7fbbb3
 palette = 13=#d699b6
 palette = 14=#83c092
 palette = 15=#d3c6aa
-# background = #001419
-# foreground = #839395
-# cursor-color = #839395
-# selection-background = #1a6397
-# selection-foreground = #839395
-# theme = Github Light High Contrast
-# theme = Vague
-# theme = Monokai Pro Spectrum
-# theme = 0x96f
-# theme = dark:Catppuccin Mocha,light:Catppuccin Latte
-# theme = Catppuccin Mocha
-macos-titlebar-style = tabs
 
+macos-titlebar-style = tabs
+macos-option-as-alt = false

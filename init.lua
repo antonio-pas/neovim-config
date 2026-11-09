@@ -16,7 +16,7 @@ vim.opt.signcolumn = 'yes:1'
 
 vim.opt.hidden = true
 vim.opt.scrolloff = 4
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.hlsearch = false
 vim.opt.showmode = false
 vim.opt.termguicolors = true
@@ -44,8 +44,8 @@ vim.pack.add({
   'https://github.com/windwp/nvim-ts-autotag',
   'https://github.com/wakatime/vim-wakatime',
   'https://github.com/christoomey/vim-tmux-navigator',
-
-  'https://github.com/sainnhe/everforest'
+  'https://github.com/sainnhe/everforest',
+  'https://github.com/lervag/vimtex'
 })
 require('nvim-ts-autotag').setup()
 require('lazydev').setup()
@@ -94,6 +94,7 @@ vim.keymap.set('n', '<leader>ff', pick.builtin.files)
 vim.keymap.set('n', '<leader>lg', pick.builtin.grep_live)
 vim.keymap.set('n', '<leader>af', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>tr', tree.open)
+vim.keymap.set('n', '<leader>tc', tree.close)
 vim.keymap.set('n', 'j', "gj")
 vim.keymap.set('n', 'k', "gk")
 vim.keymap.set('v', 'j', "gj")
@@ -107,3 +108,6 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'lua', 'typescript', 'typescriptreact', 'wgsl', 'python', 'c', 'rust' },
   callback = function() vim.treesitter.start() end,
 })
+
+vim.g.vimtex_view_method = "skim"
+
